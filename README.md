@@ -27,6 +27,14 @@ The API requires Flask to run. Please keep the terminal window open the whole ti
 
 Move into the `src/api` directory (`cd ./src/api`) and run the script with `python api.py`.
 
+The PUT request to the API requires the following headers:
+
+```py
+"content-type": "application/json"
+```
+
+The payload must be in JSON format and send in the body of the request.
+
 ### Scraper
 
 Running the scraper will send a PUT request to the API with the JSON file it has built.
