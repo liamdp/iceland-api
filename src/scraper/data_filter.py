@@ -8,14 +8,19 @@ def filter_atc(json_file):
     if json_file == '' or json_file == None:
         raise Exception("JSON file not imported. Make sure 'import_json' was run first.")
 
-    clients = json_file["clients"]
-    atc_clients = []
+    # OLD DATAFILE
+    # clients = json_file["clients"]
+    # atc_clients = []
 
-    for client in clients:
-        if client["clienttype"] == "ATC" and "atis" not in client["callsign"].lower():
-            atc_clients.append(client)
+    # for client in clients:
+    #     if client["clienttype"] == "ATC" and "atis" not in client["callsign"].lower():
+    #         atc_clients.append(client)
 
-    return atc_clients
+    # return atc_clients
+
+    controllers = json_file["controllers"]
+    return controllers
+
 
 def filter_iceland_pos(atc_clients, filter_positions):
     filtered_stations = {}
@@ -31,3 +36,9 @@ def filter_iceland_pos(atc_clients, filter_positions):
                 })
     
     return filtered_stations
+
+def getDataUrls(status_json):
+    json_file = json.loads(status_json)
+    data_urls = json_file["data"]["v3"]
+    return data_urls
+
